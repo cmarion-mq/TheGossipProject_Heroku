@@ -1,0 +1,74 @@
+<html style="background-image: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg'); background-size: cover; background-repeat: no-repeat; ">
+  	<body class="bg-transparent">
+		<div class="container-fluid col-8 shadow-lg p-1 mb-5 bg-body rounded " style="margin-top: 20px;">
+			<%= form_tag url_for(action: 'create'), method: "post" do |f|%>
+				<h3 class="card-title text-center m-2 " style="color:blue;">Sign up</h3>
+					
+
+				<!-- Zone du formulaire -->
+				<%= form_tag url_for(action: 'create'), method: "post" do %>
+				<div class="d-flex gap-3 shadow-lg p-3 mb-3 bg-body rounded">
+					<div class="col-3">
+						<%= label_tag 'First Name' %>
+						<%= text_field_tag 'first_name', nil, class: "form-control mb-3", required: true%>
+					</div>
+					<div class="col-3 ">
+						<%= label_tag 'Last Name' %>
+						<%= text_field_tag 'last_name', nil, class: "form-control mb-3", required: true  %>
+					</div>
+					<div class="col-1">
+						<%= label_tag 'Age' %>
+						<%= text_field_tag 'age', nil, class: "form-control mb-3", required: true  %>
+					</div>
+				</div>
+
+				<div class="col-12 shadow-lg p-3 mb-3 bg-body rounded">
+					<%= label_tag 'Description' %>
+					<%= text_area_tag 'description', nil, class: "form-control mb-3", required: true  %>
+				</div>
+
+				<div class="col-6 shadow-lg p-3 mb-3 bg-body rounded">
+					<%= label_tag 'Email' %>
+					<%= text_field_tag 'email', nil, class: "form-control mb-3", required: true  %>
+				</div>
+
+
+
+
+				<div class="d-flex gap-3 shadow-lg p-3 mb-5 bg-body rounded">	
+					<div class="col-3">
+						<%= label_tag 'City' %>
+						<%= text_field_tag 'city', nil, class: "form-control mb-3 ", required: true  %>
+					</div>
+					<div class="col-3">
+						<%= label_tag 'Zip Code' %>
+						<%= text_field_tag 'zip_code', nil, class: "form-control mb-3"  %>
+					</div>
+				</div>
+
+
+				<div class="d-flex gap-3 shadow-lg p-3 mb-5 bg-body rounded">	
+					<div class="col-3">
+						<%= label_tag 'Password' %>
+						<%= password_field_tag 'password', nil, class: "form-control mb-3", required: true  %>
+
+					</div>
+					<div class="col-3">
+						<%= label_tag 'Confirm passord' %>
+						<%= password_field_tag 'password_confirmation', nil, class: "form-control mb-3", required: true  %>
+
+
+					</div>
+				</div>
+
+
+
+
+				<%= submit_tag "Sign up", class: "btn btn-primary" %>
+				<% end %>
+
+			<% end %>
+
+		</div>
+  	</body>
+</html>

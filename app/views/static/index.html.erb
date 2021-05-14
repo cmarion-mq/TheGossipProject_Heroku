@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+
+    #bloco-direita,
+    #bloco-esquerdo{
+      height: 600px;
+    }
+
+
+    </style>
+  </head>
+  <body style="background-image: url('https://i.pinimg.com/originals/9a/0f/7f/9a0f7fc7712c59cff4d992c2eb94dbe6.jpg'); background-size: cover;">
+    <div class="container text-center">    
+      <% flash.each do |type, msg| %>
+      <div class="alert alert-warning">
+          <%= msg %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-3 well" id="bloco-esquerdo">
+          <div class="well">
+            <p><a href="#">My Profile</a></p>
+            <img src="https://i.pinimg.com/564x/0d/48/00/0d480021ec889eab9fc6a4447500047e.jpg" class="img-circle" height="130" width="130" alt="Avatar">
+          </div>
+          <div class="well">
+            <p><a href="#">Interests</a></p>
+            <p>
+              <span class="label label-default">Ruby</span>
+              <span class="label label-primary">THP</span>
+              <span class="label label-success">CSGO</span>
+              <span class="label label-info">Football</span>
+              <span class="label label-warning">Gaming</span>
+              <span class="label label-danger">Friends</span>
+            </p>
+          </div>
+          <div class="alert alert-success fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <p><strong>Ey!</strong></p>
+            People are looking at your profile. Find out who.
+          </div>
+          <p><a href="#">Link</a></p>
+          <p><a href="#">Link</a></p>
+          <p><a href="#">Link</a></p>
+        </div>
+        <div class="col-sm-7">
+        
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-default text-left">
+                <div class="panel-body">
+                  <p contenteditable="true">Liste de potins</p>
+                  <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                  </button>     
+                </div>
+                <a href="<%= new_gossip_path %>" class="btn bg-info">Create an Article</a>
+              </div>
+            </div>
+          </div>
+          <div class="list-group">
+            <% @gossips.each do |g| %>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="well">
+                  <p><a href="<%= gossip_path(g.id) %>" class="list-group-item list-group-item-action">Creator: <%= g.user.first_name %></a></p>
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="well">
+                    <p>Title : <%= g.title %></p>
+                  </div>
+                  <%if current_user == g.user%>
+                    <a type="button" class="btn btn-info" href="<%= edit_gossip_path(Gossip.find(g.id)) %>" class="btn">Modify the gossip above.</a>
+                    <a type="button" class="btn btn-info" href="<%= gossip_path(g[:id]) %>" class="btn" data-confirm="êtes-vous sur?" data-method="DELETE">Delete the gossip above.</a>
+                  <%end%>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>  
+        <div class="col-sm-2 well" id="bloco-direita">
+          <div class="thumbnail">
+            <p>Upcoming Events:</p>
+            <img src="https://3.bp.blogspot.com/-6EPkmQiNJy8/WU_chFax0HI/AAAAAAAAqMQ/Q2vZ1ZH4J18fb7Pp5Yr_gy2roaAeweuBACLcBGAs/s280/Arena%2Bdo%2BTorneio%2Bdo%2BPoder.png" alt="Paris" width="400" height="300">
+            <p><strong>Paris</strong></p>
+            <p>Fri. 27 November 2022</p>
+            <button class="btn btn-primary">Info</button>
+          </div>      
+          <div class="well">
+            <p>ADS</p>
+          </div>
+          <div class="well">
+            <p>ADS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+      <p>Footer Text</p>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card text-center">
+
+        <div class="card-header">
+            <h5 class="card-title">
+            <%= City.find(params[:id]).name%>
+            </h5>
+        </div>
+
+
+        <div class="card-body">
+            <div class="list-group">
+                <% @city_gossips.each do |g| %>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="well">
+                            <p><a href="<%= gossip_path(g.id) %>" class="list-group-item list-group-item-action">by <%= g.user.first_name %>, click here</a></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="well">
+                        <p>Title : <%= g.title %></p>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+</div>
